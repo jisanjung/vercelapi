@@ -3,14 +3,45 @@ const mongoose = require('mongoose');
 const app = express();
 const cors = require("cors");
 require('dotenv').config();
-const userRouter = require('./routes/userRoutes');
 const PORT = 5000;
 
 // general middleware
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
-app.use('/users', userRouter);
+// const userSchema = mongoose.Schema(
+//     {
+//         id: Number,
+//         name: String,
+//         matched: Boolean
+//     }
+// );
+// const Users = mongoose.models.Users || mongoose.model("Users", userSchema);
+  
+// router.get('/', async (req, res) => {
+//     try {
+//         const users = await Users.find({});
+//         res.status(200).json(users);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json({
+//         message: "could not get users from db"
+//         });
+//     }
+// });
+  
+// router.post('/add', async (req, res) => {
+//     try {
+//         const bodyObj = JSON.parse(req.body);
+//         const user = await Users.create(bodyObj);
+//         res.status(200).json(user);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json({
+//         message: "could not add users to db"
+//         });
+//     }
+// });
 
 // db connect and start server
 mongoose.connect(process.env.MONGO_URI)
