@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 require('dotenv').config();
 const PORT = 5000;
+const MONGO_URI = 'mongodb+srv://jason:dhlarry3@potholes.nucp7fb.mongodb.net/?retryWrites=true&w=majority&appName=potholes';
 
 // general middleware
 app.use(express.json());
@@ -44,7 +45,7 @@ app.use(cors({ origin: "*" }));
 // });
 
 // db connect and start server
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(MONGO_URI)
 .then(() => {
     // connect to db
     console.log("connected to mongodb");
